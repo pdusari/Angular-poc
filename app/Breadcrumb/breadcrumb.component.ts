@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import {Component} from 'angular2/core';
 
 @Component({
-    moduleId:module.id,
-    selector: 'combo-box',
-    templateUrl: './combo.component.html'
+  moduleId:module.id,
+  selector: 'bread-crumb',
+  templateUrl: './breadcrumb.component.html'
 })
-export class ComboComponent { }
+export class Angular2Breadcrumb {}
