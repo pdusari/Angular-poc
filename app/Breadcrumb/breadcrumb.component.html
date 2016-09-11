@@ -1,1 +1,13 @@
-<h1>My First Angular Component</h1>
+<!-- a simple div with some links -->
+<div class="breadcrumb">
+	<a href="#" class="active">Browse</a>
+	<a href="#">Compare</a>
+	<a href="#">Order Confirmation</a>
+	<a href="#">Checkout</a>
+</div>
+<br/>
+<div class="breadcrumb flat">
+	<a *ngFor="let items of menuItems;" [ngClass]="{'active':items.class}"  href="#" >{{items.menu}}</a>
+</div>
+<!-- another version - flat style with animated hover effect -->
+

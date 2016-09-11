@@ -1,1 +1,26 @@
-<h1>My First Angular Component</h1>
+<span class="select2-container select2-container--default select2-container--open">
+    <span class="select2-dropdown select2-dropdown--below" 
+    [ngStyle]="{position: 'absolute', top: '0px', left: '0px'}">
+        <span class="select2-dropdown select2-dropdown--below" [ngStyle]="{width: width + 'px'}">
+         
+       <span  class="select2-search select2-search--dropdown">
+            <input  class="select2-search__field"  (click)="onInputClick($event)" (input)="onInput($event)" style="width:200px;">
+        </span>
+        <span >
+            <ul class="select2-results__options" (click)="onOptionsClick($event)">
+                <li
+                    *ngFor="let optionValue of optionValuesFiltered;"
+                    [ngClass]="getOptionClass(optionValue)"
+                    [attr.data-value]="optionValue">
+                    {{optionValue}}
+                </li>
+                <li 
+                    *ngIf="optionValuesFiltered.length === 0"
+                    [ngClass]="getOptionClass(null)">
+                    {{MSG_NOT_FOUND}}
+                </li>
+            </ul>
+        </span>
+ </span>
+    </span>
+</span>

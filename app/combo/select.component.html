@@ -1,0 +1,35 @@
+<div style="width:100%;position:relative;">
+
+<span #container style="width:100%" class="ect2 select2-container select2-container--focus select2-container--default select2-container--below">
+        <span class="selection">
+            <span #selectionSpan (click)="onSelectionClick($event)" [ngClass]="getSelectionClass()" tabindex=0>
+                <span class="select2-selection__rendered"
+                    >
+                     <span class="select2-selection__placeholder">
+                        {{getPlaceholder()}}
+                    </span>
+                </span>
+                    <span class="select2-selection__rendered"
+                    *ngIf="selection.length > 0">
+                    <span class="select2-selection__clear"
+                        *ngIf="allowClear"
+                        (click)="onClearAllClick($event)">
+                        x
+                    </span>
+                    {{selection[0].label}}
+                </span>
+                <span class="select2-selection__arrow">
+                    <b></b>
+                </span>
+            </span>
+        </span>
+    </span>
+    <combo-box   *ngIf="isOpen" (toggleSelect)="onToggleSelect($event)"
+     [selection]="selection" [optionValues]='optionValues'
+      [optionsDict]="optionsDict"
+    [width]="width"
+        [top]="top"
+        [left]="left"
+         >
+    </combo-box>
+</div>
