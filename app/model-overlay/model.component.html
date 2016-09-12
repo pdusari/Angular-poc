@@ -3,18 +3,15 @@
 <div id="openModal" class="modalDialog">
   <div>
     <span>welcome to Loreum Ipsum</span>
-    <a href="#close" title="Close" class="close">X</a>
-    <div>
-      <div>
-        <img class="list-img" src="{{imgSrc}}" alt='Image' >
-      
-        <div style="padding-top:30px;padding-bottom:30px">
-          <input type="checkbox" name="vehicle" value="Bike">Dont'show me again
-          <span class="view-count"> Viewing 1 of 6 </span>
+    <a href="#close" (click)='onClickMe()' title="Close" class="close">X</a>
+      <div #imagediv *ngFor="let items of menuItems;let i = index" class="ng" [ngClass] = "{'className': i === indexValue}" >
+        <img class="list-img" src="{{items.image}}" alt='Image' >
+      </div>
+              <div style="padding-top:30px;padding-bottom:30px">
+          <input type="checkbox" #myId type="checkbox" (change)="checked = myId.checked">Dont'show me again
+          <span class="view-count"> Viewing {{indexValue+1}} of 6 </span>
           <button (click)="onPreviousClick()" class="previous-btn">Previous</button>
           <button (click)="onNextClick()" class="nxt-btn">Next</button>
         </div>
-      </div>
-    </div>
   </div>
 </div>

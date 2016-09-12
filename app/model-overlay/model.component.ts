@@ -1,54 +1,65 @@
-
-import { Component } from '@angular/core';
+import {
+  Component,
+  EventEmitter,ElementRef
+} from '@angular/core';
 
 @Component({
   moduleId: module.id,
   selector: 'click-me',
   templateUrl: './model.component.html',
-  inputs: ['test']
+  inputs: ['menuItems'],
+  styles: ['.className{display:block !important}.ng{display:none}'],
+  outputs: ['close']
 
 })
 
 
 export class ClickMeComponent {
-  images = [
-    { image: 'http://www.angulartypescript.com/wp-content/uploads/2016/03/car1.jpg' },
-    { image: 'http://www.angulartypescript.com/wp-content/uploads/2016/03/car2.jpg' },
-    { image: 'http://www.angulartypescript.com/wp-content/uploads/2016/03/car3.jpg' },
-    { image: 'http://www.angulartypescript.com/wp-content/uploads/2016/03/car4.jpg' },
-    { image: 'http://www.angulartypescript.com/wp-content/uploads/2016/03/car5.jpg' },
-    { image: 'http://www.angulartypescript.com/wp-content/uploads/2016/03/car6.jpg'}
-  ];
+  images: Array < any > ;
   clickMessage: string;
-  constructor() {
+  indexValue: number = 0;
+  totalLength: number;
+  checked: boolean;
+  close = new EventEmitter < any > ();
+   
+  constructor(public imagediv: ElementRef) {
 
   }
-  ngOnInit(){
-       
-       alert("I am in Init");
+  ngOnInit() {
+    var result = document.getElementsByClassName("ng");
+    console.log(result);
+    this.totalLength=result.length;
     }
-/* OpenImageModel(imageSrc,images) {
-   var imageModalPointer;
-   for (var i = 0; i < images.length; i++) {
-          if (imageSrc === images[i].img) {
-            imageModalPointer = i;
-            break;
-          }
-     }
-   this.openModalWindow = true;
-   this.images = images;
-   this.imagePointer  = imageModalPointer;
- }*/
+    /* OpenImageModel(imageSrc,images) {
+       var imageModalPointer;
+       for (var i = 0; i < images.length; i++) {
+              if (imageSrc === images[i].img) {
+                imageModalPointer = i;
+                break;
+              }
+         }
+       this.openModalWindow = true;
+       this.images = images;
+       this.imagePointer  = imageModalPointer;
+     }*/
 
   onClickMe() {
-    this.clickMessage = 'You are my hero!';
+    var checked = this.checked;
+    if (!checked) {
+      checked = false;
+    }
+    this.close.next([checked])
   }
-  onNextClick() {
-    alert("I am here");
+  onNextClick(e:any) {
+    
+    this.indexValue++;
+    if(this.indexValue==this.totalLength){
+      e.preventDefault();
+    }
   }
-  onPreviousClick(){
+  onPreviousClick() {
+    this.indexValue--;
 
   }
+
 }
-
-
