@@ -4,9 +4,14 @@ import { Component } from '@angular/core';
     selector: 'my-app',
     template: `<h1>My First Angular 2 App</h1>
     <ng-select [options]=options></ng-select>
-    <breadcrumb-html [menuItems]=menuItems></breadcrumb-html>`
+    <breadcrumb-html [menuItems]=menuItems></breadcrumb-html>
+    <br />
+    <input type="text" (input)=passitem($event) value="" />
+    <password-strength [password]=password></password-strength>`
 })
 export class AppComponent { 
+    password:any;
+
      options = [
         {
             value: 'a',
@@ -35,5 +40,8 @@ export class AppComponent {
             menu: 'Gamma'
         }
     ];
+    passitem(event:any){
+       this.password=event.target.value
+    }
 
 }
